@@ -365,7 +365,7 @@ nnoremap <leader>sc :CloseSession<CR>
 
 ""NERDTree
 nnoremap <leader>mm :NERDTreeToggle<CR>
-nnoremap <leader>mmm :NERDTreeFind<CR>
+nnoremap <leader>nn :NERDTreeFind<CR>
 "" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -482,7 +482,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+  autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
 augroup END
 
 
