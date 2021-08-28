@@ -10,6 +10,8 @@ else
   let curl_exists=expand('curl')
 endif
 
+
+
 let g:vim_bootstrap_langs = "html,javascript,typescript"
 let g:vim_bootstrap_editor = "neovim"				" nvim or vim
 let g:vim_bootstrap_theme = "molokai"
@@ -51,7 +53,9 @@ Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tomasr/molokai'
-
+Plug 'alvan/vim-closetag'
+Plug 'sbdchd/neoformat'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -106,8 +110,8 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
-
 "*****************************************************************************
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 "*****************************************************************************
 
 "" Include user's extra bundle
@@ -134,7 +138,7 @@ set ttyfast
 set backspace=indent,eol,start
 
 "" Tabs. May be overridden by autocmd rules
-set tabstop=2
+""set tabstop=2
 ""set softtabstop=0
 set shiftwidth=2
 set expandtab
@@ -143,6 +147,7 @@ set autoindent
 "" Map leader to ,
 let mapleader=','
 
+" ale
 "" Enable hidden buffers
 set hidden
 
@@ -280,7 +285,12 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+map  <C-n> :tabnew<CR>
+map  <C-Right> :tabn<CR>
+map  <C-Left> :tabp<CR>
+" ale
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
@@ -291,6 +301,8 @@ let Grep_Skip_Dirs = '.git node_modules'
 nnoremap <silent> <leader>sh :terminal<CR>
 
 
+
+imap jj <Esc>
 "*****************************************************************************
 "" Commands
 "*****************************************************************************
@@ -362,6 +374,8 @@ nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
+""PRETTIER
+nnoremap <leader>jj :Prettier<CR>
 
 ""NERDTree
 nnoremap <leader>mm :NERDTreeToggle<CR>
@@ -490,7 +504,6 @@ augroup END
 let g:yats_host_keyword = 1
 
 
-
 "*****************************************************************************
 "*****************************************************************************
 
@@ -528,7 +541,6 @@ if !exists('g:airline_powerline_fonts')
 else
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
-
   " powerline symbols
   let g:airline_left_sep = ''
   let g:airline_left_alt_sep = ''
